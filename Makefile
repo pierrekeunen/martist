@@ -1,23 +1,16 @@
-#Makefile
+# Makefile
+CC = g++
+CFLAGS = -std=c++11 -Wextra -Wall
 
-OBJECTS = parser.cpp martist.cpp
 
-martist :  $(OBJECTS:.cpp=.o)
+martist: martist.o parser.o
+	ar rcu libmartist.a $^
 
-	ar rcu libmartist.a $(OBJECTS:.cpp=.o)
+martist.o: martist.cpp
+	$(CC) -o $@ -c $^ $(CFLAGS)
 
-parser.o : parser.cpp
-
-	g++ -std=c++11 -Wall -Wextra -g -c parser.cpp
-
-martist.o :     martist.cpp
-	g++ -std=c++11 -Wall -Wextra -g -c martist.cpp
+parser.o: parser.cpp
+	$(CC) -o $@ -c $^ $(CFLAGS)
 
 clean:
-	rm -f *~ *.o *.bak
-
-mrproper :clean
-	rm -f $(OBJECTS:.cpp=)
-
-depend:
-	makedepend $(OBJECTS)
+	rm -rf *.o

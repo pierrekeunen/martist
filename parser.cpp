@@ -318,7 +318,7 @@ void Parser::recursivParse(Exp& exp, Lexer::token tokens){
 			break;
 
 		case Lexer::Y:
-			exp.emplace_back(Lexer::Y);
+			exp.emplace_back(Lexer::Y);  // return Y()
 			break;
 
 		case Lexer::SIN:

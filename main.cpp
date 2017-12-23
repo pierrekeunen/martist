@@ -9,14 +9,6 @@
 
 using namespace cimg_library;
 
-
-/*static string to_string(streamoff stroff)
-{
-    stringstream ss;
-    ss << stroff;
-    return ss.str();
-}*/
-
 int main(int argc, char** argv)
 {
     size_t width = 1000;
